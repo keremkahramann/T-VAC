@@ -25,7 +25,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -55,7 +58,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDE41LgGFlsEyniglDwFCI2AUgqJF14ZGI',
-    appId: '1:484216259466:android:45594fac1e53af8bd1fe73',
+    appId: '1:484216259466:android:8366c31ff70aecc1d1fe73',
     messagingSenderId: '484216259466',
     projectId: 't-vac-c9ba2',
     storageBucket: 't-vac-c9ba2.appspot.com',
@@ -63,19 +66,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyCQITvmkRZhPH3dMHVcaJlvv9o9vjt5IDU',
-    appId: '1:484216259466:ios:534ecbc18bb459f4d1fe73',
+    appId: '1:484216259466:ios:5919e74d998a5dd0d1fe73',
     messagingSenderId: '484216259466',
     projectId: 't-vac-c9ba2',
     storageBucket: 't-vac-c9ba2.appspot.com',
-    iosBundleId: 'com.example.tVac',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCQITvmkRZhPH3dMHVcaJlvv9o9vjt5IDU',
-    appId: '1:484216259466:ios:9745bb3ecde9e268d1fe73',
-    messagingSenderId: '484216259466',
-    projectId: 't-vac-c9ba2',
-    storageBucket: 't-vac-c9ba2.appspot.com',
-    iosBundleId: 'com.example.tVac.RunnerTests',
+    iosClientId: '484216259466-516042m594hhr66njfk6usane7ifncsv.apps.googleusercontent.com',
+    iosBundleId: 'com.example.flutterApplication2',
   );
 }
