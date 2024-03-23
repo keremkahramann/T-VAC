@@ -1,13 +1,17 @@
+// ignore_for_file: avoid_print
+
+// import 'dart:developer';
+// import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
-
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
 
   @override
-  _SignupScreenState createState() => _SignupScreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
 class _SignupScreenState extends State<SignupScreen> {
@@ -41,9 +45,9 @@ class _SignupScreenState extends State<SignupScreen> {
             ),
             const SizedBox(height: 16.0),
             ElevatedButton(
-              onPressed: () async {
+              onPressed: () {
                 try {
-                  final user = await _auth.createUserWithEmailAndPassword(
+                  _auth.createUserWithEmailAndPassword(
                       email: emailController.text,
                       password: passwordController.text);
                   Navigator.pushReplacementNamed(context, '/login');

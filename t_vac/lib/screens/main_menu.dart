@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api, unused_field
+
 import 'package:flutter/material.dart';
 import 'home_page.dart' as home; // Home sayfası için dart dosyası
 import 'business_page.dart' as busi; // Business sayfası için dart dosyası

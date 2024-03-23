@@ -1,16 +1,19 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../screens/MainMenuScreen.dart';
+import '../screens/main_menu.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
@@ -40,9 +43,9 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             const SizedBox(height: 16.0),
             ElevatedButton(
-              onPressed: () async {
+              onPressed: () {
                 try {
-                  final userCredential = await _auth.signInWithEmailAndPassword(
+                  _auth.signInWithEmailAndPassword(
                     email: emailController.text,
                     password: passwordController.text,
                   );
@@ -76,7 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     );
                   } else {
-                    print('Error: ${e.message}');
+                    log('Error: ${e.message}');
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
                         content:
@@ -86,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     );
                   }
                 } catch (e) {
-                  print('Error: $e');
+                  log('Error: $e');
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
                       content:
