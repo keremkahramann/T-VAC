@@ -7,14 +7,14 @@ import 'school_page.dart' as school; // School sayfası için dart dosyası
 import 'settings_page.dart' as settings; // Settings sayfası için dart dosyası
 import '../auth/login.dart';
 
-class MainMenuScreen extends StatefulWidget {
-  const MainMenuScreen({super.key});
+class MainMenu extends StatefulWidget {
+  const MainMenu({super.key});
 
   @override
-  _MainMenuScreenState createState() => _MainMenuScreenState();
+  _MainMenuState createState() => _MainMenuState();
 }
 
-class _MainMenuScreenState extends State<MainMenuScreen> {
+class _MainMenuState extends State<MainMenu> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {

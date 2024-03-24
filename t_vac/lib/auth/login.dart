@@ -1,8 +1,12 @@
+// ignore_for_file: use_build_context_synchronously, unused_import
+
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../screens/main_menu.dart';
+import 'package:get/get.dart';
+import 'package:quickalert/quickalert.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -16,6 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   @override
   Widget build(BuildContext context) {
@@ -43,9 +48,9 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             const SizedBox(height: 16.0),
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 try {
-                  _auth.signInWithEmailAndPassword(
+                  await _auth.signInWithEmailAndPassword(
                     email: emailController.text,
                     password: passwordController.text,
                   );
@@ -53,24 +58,20 @@ class _LoginScreenState extends State<LoginScreen> {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const MainMenuScreen(),
+                      builder: (context) => const MainMenu(),
                     ),
                   );
                 } on FirebaseAuthException catch (e) {
                   if (e.code == 'user-not-found') {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('User not found. Please register.'),
-                        duration: Duration(seconds: 3),
-                      ),
-                    );
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text('User not found. Please register.'),
+                      duration: Duration(seconds: 3),
+                    ));
                   } else if (e.code == 'wrong-password') {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Wrong password. Please try again.'),
-                        duration: Duration(seconds: 3),
-                      ),
-                    );
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text('Wrong password. Please try again.'),
+                      duration: Duration(seconds: 3),
+                    ));
                   } else if (e.code == 'invalid-email') {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
