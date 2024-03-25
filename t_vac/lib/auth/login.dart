@@ -4,6 +4,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:t_vac/auth/authWidgets/reset_password.dart';
 import '../screens/main_menu.dart';
 import 'package:get/get.dart';
 import 'package:quickalert/quickalert.dart';
@@ -56,15 +57,19 @@ class _LoginScreenState extends State<LoginScreen> {
             TextField(
               controller: emailController,
               decoration: const InputDecoration(
-                labelText: 'Email',
-              ),
+                  labelText: 'Email',
+                  focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                          color: Color.fromARGB(255, 118, 192, 33)))),
             ),
             const SizedBox(height: 16.0),
             TextField(
               controller: passwordController,
               decoration: const InputDecoration(
-                labelText: 'Password',
-              ),
+                  labelText: 'Password',
+                  focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                          color: Color.fromARGB(255, 118, 192, 33)))),
               obscureText: true,
             ),
             const SizedBox(height: 16.0),
@@ -121,28 +126,38 @@ class _LoginScreenState extends State<LoginScreen> {
                     );
                   }
                 },
-                child: const Text('Login'),
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,
-                  backgroundColor: Color.fromARGB(255, 118, 192, 33),
+                  backgroundColor: const Color.fromARGB(255, 118, 192, 33),
                   elevation: 5,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                )),
+                ),
+                child: const Text('Login')),
             ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/signup');
                 },
-                child: const Text('Sign Up'),
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,
-                  backgroundColor: Color.fromARGB(255, 118, 192, 33),
+                  backgroundColor: const Color.fromARGB(255, 118, 192, 33),
                   elevation: 5,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                )),
+                ),
+                child: const Text('Sign Up')),
+            TextButton(
+                onPressed: () {
+                  showEmailDialog(context);
+                },
+                child: const Text(
+                  'Forgot Password',
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 118, 192, 33),
+                  ),
+                ))
           ],
         ),
       ),
