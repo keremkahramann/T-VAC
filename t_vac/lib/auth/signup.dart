@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, use_build_context_synchronously
 
 // import 'dart:developer';
 // import 'dart:math';
@@ -45,14 +45,21 @@ class _SignupScreenState extends State<SignupScreen> {
             ),
             const SizedBox(height: 16.0),
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 try {
-                  _auth.createUserWithEmailAndPassword(
+                  await _auth.createUserWithEmailAndPassword(
                       email: emailController.text,
                       password: passwordController.text);
                   Navigator.pushReplacementNamed(context, '/login');
-                } catch (e) {
-                  print(e);
+                } on FirebaseAuthException catch (e) {
+                  if (e.code == 'invalid-email' ||
+                      e.email == null ||
+                      e.email == "") {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text("Geçerli bir E-posta adresi giriniz."),
+                      duration: Duration(seconds: 3),
+                    ));
+                  }
                 }
               },
               child: const Text('Sign Up'),

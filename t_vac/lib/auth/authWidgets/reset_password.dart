@@ -1,3 +1,7 @@
+// ignore_for_file: use_build_context_synchronously, avoid_print
+
+//import 'dart:math';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +12,7 @@ void showEmailDialog(BuildContext context) {
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: Center(child: Text('Şifre Sıfırlama')),
+        title: const Center(child: Text('Şifre Sıfırlama')),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
@@ -35,29 +39,31 @@ void showEmailDialog(BuildContext context) {
             ),
           ),
           ElevatedButton(
-            onPressed: () {
+            onPressed: () async {
               final String email = emailController.text.trim();
-
-              if (email.isEmpty) {
-                return;
-              }
-
               try {
-                FirebaseAuth.instance.sendPasswordResetEmail(email: email);
-
+                await FirebaseAuth.instance
+                    .sendPasswordResetEmail(email: email);
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
                     content: Text('Şifre sıfırlama e-postası gönderildi.'),
                   ),
                 );
-
                 Navigator.of(context).pop();
               } on FirebaseAuthException catch (e) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(e.message!),
-                  ),
-                );
+                if (e.code == 'invalid-email' ||
+                    e.email == null ||
+                    e.email == "") {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text("Geçerli bir E-posta adresi giriniz."),
+                    duration: Duration(seconds: 3),
+                  ));
+                }
+                // ScaffoldMessenger.of(context).showSnackBar(
+                //   SnackBar(
+                //     content: Text(e.message!),
+                //   ),
+                // );
               }
             },
             style: ElevatedButton.styleFrom(

@@ -41,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 image: AssetImage("lib/images/bugday1.png"),
                 fit: BoxFit.contain)),
       ),
-      Padding(
+      const Padding(
           padding: EdgeInsets.only(top: 30, right: 150),
           child: Text(
             "Hoşgeldiniz",
@@ -57,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
             TextField(
               controller: emailController,
               decoration: const InputDecoration(
-                  labelText: 'Email',
+                  labelText: 'E-Posta',
                   focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
                           color: Color.fromARGB(255, 118, 192, 33)))),
@@ -66,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
             TextField(
               controller: passwordController,
               decoration: const InputDecoration(
-                  labelText: 'Password',
+                  labelText: 'Şifre',
                   focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
                           color: Color.fromARGB(255, 118, 192, 33)))),
@@ -90,18 +90,22 @@ class _LoginScreenState extends State<LoginScreen> {
                   } on FirebaseAuthException catch (e) {
                     if (e.code == 'user-not-found') {
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        content: Text('User not found. Please register.'),
+                        content:
+                            Text('Kullanıcı bulunamadı.Lütfen kayıt olunuz.'),
                         duration: Duration(seconds: 3),
                       ));
-                    } else if (e.code == 'wrong-password') {
+                    } else if (e.code == 'wrong-password' ||
+                        passwordController.text == "") {
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        content: Text('Wrong password. Please try again.'),
+                        content: Text('Şifre yanlış.Lütfen tekrar deneyiniz.'),
                         duration: Duration(seconds: 3),
                       ));
-                    } else if (e.code == 'invalid-email') {
+                    } else if (e.code == 'invalid-email' ||
+                        e.email == null ||
+                        e.email == "") {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
-                          content: Text('Invalid email address.'),
+                          content: Text('Geçerli bir E-posta adresi giriniz.'),
                           duration: Duration(seconds: 3),
                         ),
                       );
@@ -134,7 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                child: const Text('Login')),
+                child: const Text('Giriş Yap')),
             ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/signup');
@@ -147,13 +151,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                child: const Text('Sign Up')),
+                child: const Text('Kayıt Ol')),
             TextButton(
                 onPressed: () {
                   showEmailDialog(context);
                 },
                 child: const Text(
-                  'Forgot Password',
+                  'Şifremi Unuttum',
                   style: TextStyle(
                     color: Color.fromARGB(255, 118, 192, 33),
                   ),
