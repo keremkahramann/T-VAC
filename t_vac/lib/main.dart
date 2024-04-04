@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:t_vac/auth/firebase_options.dart';
 import 'auth/login.dart' as login;
 import 'auth/signup.dart' as signup;
+import 'screens/main_menu.dart' as mainmenu;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,10 +24,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/login',
+      initialRoute: '/MainMenu',
       routes: {
         '/login': (context) => const login.LoginScreen(),
         '/signup': (context) => const signup.SignupScreen(),
+        '/MainMenu': (context) => const mainmenu.MainMenu()
       },
     );
   }

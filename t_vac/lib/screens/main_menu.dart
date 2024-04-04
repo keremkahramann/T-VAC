@@ -1,7 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api, unused_field
 
 import 'package:flutter/material.dart';
-import 'home_page.dart' as home; // Home sayfası için dart dosyası
+import 'package:t_vac/widgets/analysis.dart';
 import 'business_page.dart' as busi; // Business sayfası için dart dosyası
 import 'school_page.dart' as school; // School sayfası için dart dosyası
 import 'settings_page.dart' as settings; // Settings sayfası için dart dosyası
@@ -30,7 +30,7 @@ class _MainMenuState extends State<MainMenu> {
 
     switch (index) {
       case 0:
-        screen = const home.HomePage(); // Home sayfasına yönlendir
+        screen = const MainMenu(); // Home sayfasına yönlendir
         break;
       case 1:
         screen = const busi.BusinessPage(); // Business sayfasına yönlendir
@@ -71,6 +71,7 @@ class _MainMenuState extends State<MainMenu> {
           ),
         ],
       ),
+      body: const Analysis(),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -87,11 +88,11 @@ class _MainMenuState extends State<MainMenu> {
                 ),
               ),
             ),
-            ListTile(
-              leading: const Icon(Icons.home),
-              title: const Text('Home'),
-              onTap: () => _onItemTapped(0),
-            ),
+            // ListTile(
+            //   leading: const Icon(Icons.home),
+            //   title: const Text('Main Menu'),
+            //   onTap: () => _onItemTapped(0),
+            // ),
             ListTile(
               leading: const Icon(Icons.business),
               title: const Text('Business'),

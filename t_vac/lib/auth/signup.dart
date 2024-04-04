@@ -55,10 +55,19 @@ class _SignupScreenState extends State<SignupScreen> {
                   if (e.code == 'invalid-email' ||
                       e.email == null ||
                       e.email == "") {
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text("Geçerli bir E-posta adresi giriniz."),
-                      duration: Duration(seconds: 3),
-                    ));
+                    if (e.code == 'weak-password') {
+                      debugPrint("SignUpError: " '${e.code}');
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text("Şifreniz en az 6 karakter olmalıdır."),
+                        duration: Duration(seconds: 3),
+                      ));
+                    } else {
+                      debugPrint("SignUpError: " '${e.code}');
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text("Geçerli bir E-posta adresi giriniz."),
+                        duration: Duration(seconds: 3),
+                      ));
+                    }
                   }
                 }
               },

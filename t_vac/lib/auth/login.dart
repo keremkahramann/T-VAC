@@ -89,38 +89,39 @@ class _LoginScreenState extends State<LoginScreen> {
                     );
                   } on FirebaseAuthException catch (e) {
                     if (e.code == 'user-not-found') {
+                      debugPrint("Login ERROR1:" '${e.code}');
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                         content:
                             Text('Kullanıcı bulunamadı.Lütfen kayıt olunuz.'),
                         duration: Duration(seconds: 3),
                       ));
-                    } else if (e.code == 'wrong-password' ||
-                        passwordController.text == "") {
+                    } else if (e.code == 'invalid-password' ||
+                        e.code == 'weak-password' ||
+                        e.code == 'invalid-credential') {
+                      debugPrint("Login ERROR2:" '${e.code}');
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                         content: Text('Şifre yanlış.Lütfen tekrar deneyiniz.'),
                         duration: Duration(seconds: 3),
                       ));
-                    } else if (e.code == 'invalid-email' ||
-                        e.email == null ||
-                        e.email == "") {
+                    } else if (e.code == 'invalid-email') {
+                      debugPrint("Login ERROR3:" '${e.code}');
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           content: Text('Geçerli bir E-posta adresi giriniz.'),
                           duration: Duration(seconds: 3),
                         ),
                       );
-                    } else {
-                      log('Error: ${e.message}');
+                    } else if (e.code == 'channel-error') {
+                      debugPrint('Login Error4: ${e.code}');
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
-                          content: Text(
-                              'An error occurred. Please try again later.'),
+                          content: Text('E-Posta veya şifre boş bırakılamaz.'),
                           duration: Duration(seconds: 3),
                         ),
                       );
                     }
                   } catch (e) {
-                    log('Error: $e');
+                    // debugPrint('Login Error5: ${e.code}');
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
                         content:
