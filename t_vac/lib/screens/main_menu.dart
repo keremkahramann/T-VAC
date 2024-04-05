@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:t_vac/widgets/analysis.dart';
+import 'home_page.dart' as home; // Home sayfası için dart dosyası
 import 'business_page.dart' as busi; // Business sayfası için dart dosyası
 import 'school_page.dart' as school; // School sayfası için dart dosyası
 import 'settings_page.dart' as settings; // Settings sayfası için dart dosyası
@@ -78,34 +79,36 @@ class _MainMenuState extends State<MainMenu> {
           children: <Widget>[
             const DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
+                  color: Color.fromARGB(255, 118, 192, 33),
+                  image: DecorationImage(
+                      image: AssetImage("lib/images/greennavbar.jpg"),
+                      fit: BoxFit.cover)),
               child: Text(
                 'Menu',
                 style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
+                    color: Color.fromARGB(255, 0, 0, 0),
+                    fontSize: 28,
+                    fontWeight: FontWeight.w500),
               ),
             ),
-            // ListTile(
-            //   leading: const Icon(Icons.home),
-            //   title: const Text('Main Menu'),
-            //   onTap: () => _onItemTapped(0),
-            // ),
+            ListTile(
+              leading: const Icon(Icons.home),
+              title: const Text('Home'),
+              onTap: () => _onItemTapped(0),
+            ),
             ListTile(
               leading: const Icon(Icons.business),
-              title: const Text('Business'),
+              title: const Text('Seçenek1'),
               onTap: () => _onItemTapped(1),
             ),
             ListTile(
               leading: const Icon(Icons.school),
-              title: const Text('School'),
+              title: const Text('Seçenek2'),
               onTap: () => _onItemTapped(2),
             ),
             ListTile(
               leading: const Icon(Icons.settings),
-              title: const Text('Settings'),
+              title: const Text('Seçenek3'),
               onTap: () => _onItemTapped(3),
             ),
           ],

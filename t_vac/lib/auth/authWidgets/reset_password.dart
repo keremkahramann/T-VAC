@@ -24,7 +24,7 @@ void showEmailDialog(BuildContext context) {
                   hintText: 'E-posta',
                   focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
-                          color: Color.fromARGB(255, 118, 192, 33)))),
+                          color: const Color.fromARGB(255, 85, 199, 89)))),
             ),
           ],
         ),
@@ -35,7 +35,7 @@ void showEmailDialog(BuildContext context) {
             },
             child: const Text(
               'İptal',
-              style: TextStyle(color: Color.fromARGB(255, 118, 192, 33)),
+              style: TextStyle(color: const Color.fromARGB(255, 85, 199, 89)),
             ),
           ),
           ElevatedButton(

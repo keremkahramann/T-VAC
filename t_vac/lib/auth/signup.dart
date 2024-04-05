@@ -23,23 +23,23 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sign Up'),
+        title: const Text('Kayıt Ol'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
         child: Column(
           children: [
             TextField(
               controller: emailController,
               decoration: const InputDecoration(
-                labelText: 'Email',
+                labelText: 'E-Posta',
               ),
             ),
             const SizedBox(height: 16.0),
             TextField(
               controller: passwordController,
               decoration: const InputDecoration(
-                labelText: 'Password',
+                labelText: 'Şifre',
               ),
               obscureText: true,
             ),
@@ -71,7 +71,18 @@ class _SignupScreenState extends State<SignupScreen> {
                   }
                 }
               },
-              child: const Text('Sign Up'),
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: const Color.fromARGB(255, 85, 199, 89),
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              child: const Text(
+                'Kayıt Ol',
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              ),
             ),
           ],
         ),
