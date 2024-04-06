@@ -68,7 +68,7 @@ void showEmailDialog(BuildContext context) {
               }
             },
             style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 118, 192, 33),
+                backgroundColor: const Color.fromARGB(255, 85, 199, 89),
                 foregroundColor: Colors.white),
             child: const Text('Şifreyi Sıfırla'),
           ),

@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       bottomRight: Radius.circular(20),
                       bottomLeft: Radius.circular(20)),
                   image: DecorationImage(
-                    image: AssetImage("lib/images/iconttvac.png"),
+                    image: AssetImage("lib/images/logotvac.png"),
                     fit: BoxFit.contain,
                   ),
                 ),
@@ -88,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   borderSide: BorderSide(color: Colors.green),
                                 ),
                               ),
-                              cursorColor: Colors.orange,
+                              cursorColor: Colors.green,
                             ),
                             const SizedBox(height: 16.0),
                             TextField(
@@ -103,7 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   borderRadius: BorderRadius.circular(15.0),
                                 ),
                               ),
-                              cursorColor: Colors.orange,
+                              cursorColor: Colors.green,
                               obscureText: true,
                             ),
                             const SizedBox(height: 16.0),
