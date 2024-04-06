@@ -79,21 +79,31 @@ class _LoginScreenState extends State<LoginScreen> {
                               controller: emailController,
                               decoration: InputDecoration(
                                 labelText: 'E-Posta',
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                  borderSide: BorderSide(color: Colors.green),
+                                ),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15.0),
                                   borderSide: BorderSide(color: Colors.green),
                                 ),
                               ),
+                              cursorColor: Colors.orange,
                             ),
                             const SizedBox(height: 16.0),
                             TextField(
                               controller: passwordController,
                               decoration: InputDecoration(
                                 labelText: 'Şifre',
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                  borderSide: BorderSide(color: Colors.green),
+                                ),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15.0),
                                 ),
                               ),
+                              cursorColor: Colors.orange,
                               obscureText: true,
                             ),
                             const SizedBox(height: 16.0),

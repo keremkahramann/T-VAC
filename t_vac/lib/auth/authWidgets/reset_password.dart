@@ -25,6 +25,7 @@ void showEmailDialog(BuildContext context) {
                   focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
                           color: const Color.fromARGB(255, 85, 199, 89)))),
+              cursorColor: Colors.orange,
             ),
           ],
         ),

@@ -1,10 +1,4 @@
-// import 'package:flutter/foundation.dart';
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 
 class Analysis extends StatefulWidget {
   const Analysis({super.key});
@@ -19,44 +13,69 @@ class _AnalysisState extends State<Analysis> {
     double deviceHeight = MediaQuery.of(context).size.height;
     double deviceWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-        body: Container(
+      body: Stack(
+        children: [
+          Container(
             margin: const EdgeInsets.only(top: 10, left: 20),
             alignment: Alignment.topCenter,
-            height: deviceHeight / 2.9,
+            height: deviceHeight / 1.4,
             width: deviceWidth / 1.1,
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(30)),
               color: Color.fromARGB(255, 127, 198, 47),
             ),
-            child: CustomPaint(
-              painter: CurveCustomPainter(),
-              child: const Text(
-                'Analysis',
-                style: TextStyle(fontSize: 25, color: Colors.white),
-              ),
-            )));
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.all(12),
+                  child: Text(
+                    'Analizler',
+                    style: TextStyle(
+                        fontSize: 25,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                const SizedBox(height: 5),
+                Container(
+                  width: double.infinity,
+                  height: 2,
+                  color: Colors.white,
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: 10, // database collection length
+                    itemBuilder: (context, index) {
+                      return Container(
+                        color: index % 2 == 0
+                            ? Colors.green
+                            : const Color.fromARGB(255, 127, 198, 47),
+                        child: ListTile(
+                          title: Text(
+                            'Analiz ${index + 1}', //parantez içinde tarih yazmalı
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                          onTap: () {
+                            // tıklama işlemleri
+                            //navigator ekle
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                  content:
+                                      Text('Tıklanan Analiz: ${index + 1}')),
+                            );
+                          },
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
-
-//Analysis yazısının altına bir çizgi çekilmesi için kullanılacak
-class CurveCustomPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    var paint = Paint()
-      ..color = Colors.white
-      ..style = PaintingStyle.fill
-      ..strokeWidth = 3;
-    canvas.drawLine(const Offset(-10, 40), const Offset(110, 40), paint);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return false;
-  }
-}
-
-//   Widget analysis = const Row(
-//     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//     children: [Text('a')],
-//   );
-// }
