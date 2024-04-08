@@ -1,9 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:t_vac/auth/firebase_options.dart';
+import 'package:t_vac/screens/bluetooth.dart';
+import 'package:t_vac/screens/deneme.dart';
 import 'auth/login.dart' as login;
 import 'auth/signup.dart' as signup;
-import 'screens/main_menu.dart' as mainmenu;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,11 +25,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/MainMenu',
+      initialRoute: '/bluetooth',
       routes: {
         '/login': (context) => const login.LoginScreen(),
         '/signup': (context) => const signup.SignupScreen(),
-        '/MainMenu': (context) => const mainmenu.MainMenu()
+        '/deneme': (context) => const deneme(),
+        '/bluetooth': (context) => blue(),
       },
     );
   }
