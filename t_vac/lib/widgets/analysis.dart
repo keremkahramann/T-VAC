@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:t_vac/screens/bluetooth.dart';
+import 'package:t_vac/screens/deneme.dart';
 
 class Analysis extends StatefulWidget {
   const Analysis({super.key});
@@ -8,6 +10,16 @@ class Analysis extends StatefulWidget {
 }
 
 class _AnalysisState extends State<Analysis> {
+  void _onItemTapped(int index) {
+    setState(() {});
+    _navigateToScreen(index);
+  }
+
+  void _navigateToScreen(int index) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const deneme()));
+  }
+
   @override
   Widget build(BuildContext context) {
     double deviceHeight = MediaQuery.of(context).size.height;
@@ -53,20 +65,18 @@ class _AnalysisState extends State<Analysis> {
                             ? Colors.green
                             : const Color.fromARGB(255, 127, 198, 47),
                         child: ListTile(
-                          title: Text(
-                            'Analiz ${index + 1}', //parantez içinde tarih yazmalı
-                            style: const TextStyle(color: Colors.white),
-                          ),
-                          onTap: () {
-                            // tıklama işlemleri
-                            //navigator ekle
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                  content:
-                                      Text('Tıklanan Analiz: ${index + 1}')),
-                            );
-                          },
-                        ),
+                            title: Text(
+                              'Analiz ${index + 1}', //parantez içinde tarih yazmalı
+                              style: const TextStyle(color: Colors.white),
+                            ),
+                            onTap: () => _onItemTapped(index)
+                            // ScaffoldMessenger.of(context).showSnackBar(
+                            //   SnackBar(
+                            //       content:
+                            //           Text('Tıklanan Analiz: ${index + 1}')),
+                            //   );
+
+                            ),
                       );
                     },
                   ),

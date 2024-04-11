@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print, camel_case_types, unused_element, prefer_final_fields, prefer_const_constructors
+
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
@@ -13,7 +15,8 @@ class blue extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme:
+            ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 118, 192, 33)),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -51,7 +54,8 @@ class _MyHomePageState extends State<MyHomePage> {
         });
       });
     } catch (e) {
-      print(e);
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Bluetooth Error'), duration: Duration(seconds: 3)));
     }
 
     setState(() {

@@ -2,8 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:t_vac/widgets/analysis.dart';
-import 'home_page.dart' as home; // Home sayfası için dart dosyası
-import 'business_page.dart' as busi; // Business sayfası için dart dosyası
+// import 'home_page.dart' as home; // Home sayfası için dart dosyası
+// import 'business_page.dart' as busi; // Business sayfası için dart dosyası
+import 'bluetooth.dart' as blt;
 import 'school_page.dart' as school; // School sayfası için dart dosyası
 import 'settings_page.dart' as settings; // Settings sayfası için dart dosyası
 import '../auth/login.dart';
@@ -34,7 +35,9 @@ class _MainMenuState extends State<MainMenu> {
         screen = const MainMenu(); // Home sayfasına yönlendir
         break;
       case 1:
-        screen = const busi.BusinessPage(); // Business sayfasına yönlendir
+        screen = const blt.MyHomePage(
+          title: 'Blueooth Bağlantısı',
+        ); // Business sayfasına yönlendir
         break;
       case 2:
         screen = const school.SchoolPage(); // School sayfasına yönlendir
@@ -98,7 +101,7 @@ class _MainMenuState extends State<MainMenu> {
             ),
             ListTile(
               leading: const Icon(Icons.business),
-              title: const Text('Seçenek1'),
+              title: const Text('Bluetooth'),
               onTap: () => _onItemTapped(1),
             ),
             ListTile(
