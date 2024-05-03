@@ -1,6 +1,8 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:t_vac/screens/bluetooth.dart';
-import 'package:t_vac/screens/deneme.dart';
+import 'package:t_vac/screens/analysis_detail.dart';
 
 class Analysis extends StatefulWidget {
   const Analysis({super.key});
@@ -16,8 +18,8 @@ class _AnalysisState extends State<Analysis> {
   }
 
   void _navigateToScreen(int index) {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const deneme()));
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => const analysis_detail()));
   }
 
   @override

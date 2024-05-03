@@ -7,6 +7,7 @@ class SchoolPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.green.shade400,
         title: const Text('School'),
       ),
       body: const Center(

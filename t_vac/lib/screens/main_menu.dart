@@ -1,6 +1,7 @@
-// ignore_for_file: library_private_types_in_public_api, unused_field
+// ignore_for_file: library_private_types_in_public_api, unused_field, unnecessary_import
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:t_vac/widgets/analysis.dart';
 // import 'home_page.dart' as home; // Home sayfası için dart dosyası
 // import 'business_page.dart' as busi; // Business sayfası için dart dosyası
@@ -66,7 +67,8 @@ class _MainMenuState extends State<MainMenu> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Main Menu'),
+        backgroundColor: Colors.green.shade400,
+        title: const Text('Ana Menü'),
         centerTitle: true,
         actions: [
           IconButton(
@@ -78,25 +80,31 @@ class _MainMenuState extends State<MainMenu> {
       body: const Analysis(),
       drawer: Drawer(
         child: ListView(
-          padding: EdgeInsets.zero,
           children: <Widget>[
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 118, 192, 33),
-                  image: DecorationImage(
-                      image: AssetImage("lib/images/greennavbar.jpg"),
-                      fit: BoxFit.cover)),
-              child: Text(
-                'Menu',
-                style: TextStyle(
-                    color: Color.fromARGB(255, 0, 0, 0),
-                    fontSize: 28,
-                    fontWeight: FontWeight.w500),
-              ),
-            ),
+            DrawerHeader(
+                padding: EdgeInsets.zero,
+                child: Stack(
+                  children: [
+                    Positioned(
+                      child: Image.asset(
+                        "lib/images/greennavbar.jpg",
+                        fit: BoxFit.cover,
+                        width: 500,
+                        height: 500,
+                      ),
+                    ),
+                    Positioned(
+                      child: Image.asset(
+                        "lib/images/logotvac.png",
+                        fit: BoxFit.cover,
+                        width: 200,
+                      ),
+                    ),
+                  ],
+                )),
             ListTile(
               leading: const Icon(Icons.home),
-              title: const Text('Home'),
+              title: const Text('Ana Menü'),
               onTap: () => _onItemTapped(0),
             ),
             ListTile(
@@ -111,7 +119,7 @@ class _MainMenuState extends State<MainMenu> {
             ),
             ListTile(
               leading: const Icon(Icons.settings),
-              title: const Text('Seçenek3'),
+              title: const Text('Ayarlar'),
               onTap: () => _onItemTapped(3),
             ),
           ],

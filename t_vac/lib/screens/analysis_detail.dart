@@ -1,6 +1,5 @@
 // ignore_for_file: avoid_web_libraries_in_flutter, unused_import, unnecessary_import
 
-import 'dart:html';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +32,7 @@ class analysis_detail extends StatelessWidget {
                   width: deviceWidth, // üst yeşil alanın genişliği
                   height: deviceHeight, // üst yeşil alanın uzunluğu
                   alignment: AlignmentDirectional.topCenter,
-                  margin: const EdgeInsets.only(bottom: 400),
+                  margin: const EdgeInsets.only(bottom: 250),
                   decoration: const BoxDecoration(
                       image: DecorationImage(
                           image: AssetImage('lib/images/analysisphoto2.jpg'))),

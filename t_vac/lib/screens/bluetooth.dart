@@ -1,8 +1,11 @@
-// ignore_for_file: avoid_print, camel_case_types, unused_element, prefer_final_fields, prefer_const_constructors
+// ignore_for_file: avoid_print, camel_case_types, unused_element, prefer_final_fields, prefer_const_constructors, unused_field, unused_import
 
+// ignore: unnecessary_import
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:quickalert/quickalert.dart';
 
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
@@ -19,7 +22,7 @@ class blue extends StatelessWidget {
             ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 118, 192, 33)),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Bluetooth Bağlantısı'),
     );
   }
 }
@@ -40,13 +43,16 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    _getDevices();
   }
 
   void _getDevices() async {
     List<BluetoothDevice> devices = [];
     try {
-      print("denemee");
+      // ignore: unrelated_type_equality_checks
+      if (FlutterBluetoothSerial.instance.isAvailable == 1) {
+        print("calisiyor");
+      }
+
       FlutterBluetoothSerial.instance.startDiscovery().listen((device) {
         print('devices : $devices');
         setState(() {
@@ -54,6 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
         });
       });
     } catch (e) {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text('Bluetooth Error'), duration: Duration(seconds: 3)));
     }
@@ -101,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Colors.green.shade400,
         title: Text(widget.title),
       ),
       body: ListView.builder(
@@ -135,6 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // ),
 
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.green.shade400,
         onPressed: _getDevices,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
@@ -147,7 +155,7 @@ class DevicePage extends StatelessWidget {
   final BluetoothDevice device;
   final BluetoothConnection connection;
 
-  DevicePage({required this.device, required this.connection});
+  const DevicePage({super.key, required this.device, required this.connection});
 
   @override
   Widget build(BuildContext context) {

@@ -4,7 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:t_vac/auth/firebase_options.dart';
 import 'package:t_vac/screens/bluetooth.dart';
-import 'package:t_vac/screens/deneme.dart';
+import 'package:t_vac/screens/analysis_detail.dart';
 import 'auth/login.dart' as login;
 import 'auth/signup.dart' as signup;
 import 'screens/main_menu.dart' as mainmenu;
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) => const login.LoginScreen(),
         '/mainmenu': (context) => const mainmenu.MainMenu(),
         '/signup': (context) => const signup.SignupScreen(),
-        '/deneme': (context) => const deneme(),
+        '/analysisdetail': (context) => const analysis_detail(),
         '/bluetooth': (context) => blue(),
       },
     );
